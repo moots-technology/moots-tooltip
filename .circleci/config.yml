@@ -27,9 +27,9 @@ jobs:
             npm ci
             npm run build
       - persist_to_workspace:
-          root: .
+          root: ./dist/moost-tooltip
           paths:
-            - dist/moots-tooltip
+            - ./*
 
   publish-beta:
     docker:
