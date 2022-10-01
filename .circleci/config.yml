@@ -27,7 +27,7 @@ jobs:
             npm ci
             npm run build
       - persist_to_workspace:
-          root: .
+          root: workspace
           paths:
             - dist/*
             - package.json
@@ -38,7 +38,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: ./project/dist/moots-tooltip
+        at: tmp/workspace/dist/moots-tooltip
       - run:
           name: Authenticate with NPM
           command: |
@@ -53,7 +53,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: ./project/dist/moots-tooltip
+          at: tmp/workspace/dist/moots-tooltip
       - run:
           name: Authenticate with NPM
           command: |
@@ -62,6 +62,7 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
+            ls
             npm publish --access public
 workflows:
   version: 2
