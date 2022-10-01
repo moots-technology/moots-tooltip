@@ -29,9 +29,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - dist/*
-            - package.json
-            - package-lock.json
+            - dist/moots-tooltip
 
   publish-beta:
     docker:
@@ -42,12 +40,11 @@ jobs:
       - run:
           name: Authenticate with NPM
           command: |
-            printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > ~/.npmrc
+            printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
             npm whoami
       - run:
           name: Deploy to NPM
           command: |
-            cd ./dist/moots-tooltip
             npm publish --access public --tag beta
   publish:
     docker:
@@ -58,12 +55,11 @@ jobs:
       - run:
           name: Authenticate with NPM
           command: |
-            printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > ~/.npmrc
+            printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
             npm whoami
       - run:
           name: Deploy to NPM
           command: |
-            cd ./dist/moots-tooltip
             npm publish --access public
 workflows:
   version: 2
