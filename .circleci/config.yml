@@ -38,7 +38,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: .
+          at: ./dist/moots-tooltip
       - run:
           name: Authenticate with NPM
           command: |
@@ -47,14 +47,13 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
-            cd ./dist/moots-tooltip
             npm publish --access public --tag beta
   publish:
     docker:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: .
+          at: ./dist/moots-tooltip
       - run:
           name: Authenticate with NPM
           command: |
