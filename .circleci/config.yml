@@ -47,6 +47,8 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
+            ls
+            pwd
             npm publish --access public --tag beta
   publish:
     docker:
@@ -62,6 +64,8 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
+            ls
+            pwd
             npm publish --access public
 workflows:
   version: 2
