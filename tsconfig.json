@@ -12,9 +12,9 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "moots-tooltip-v12": [
-        "dist/moots-tooltip-v12/moots-tooltip-v12",
-        "dist/moots-tooltip-v12"
+      "moots-tooltip": [
+        "dist/moots-tooltip/moots-tooltip",
+        "dist/moots-tooltip"
       ]
     },
     "experimentalDecorators": true,
