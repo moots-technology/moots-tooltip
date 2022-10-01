@@ -1,6 +1,14 @@
 {
   "name": "moots-tooltip",
   "version": "0.0.3",
+  "author": {
+    "name": "Fangyu Yuan",
+    "email": "fangyu204@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kay-Yuan/moots-tooltip"
+  },
   "scripts": {
     "build": "ng-packagr -p ng-package.json"
   },
@@ -15,5 +23,6 @@
   },
   "devDependencies": {
     "ng-packagr": "^12.1.1"
-  }
+  },
+  "license": "MIT"
 }
