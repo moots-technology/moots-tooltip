@@ -62,7 +62,6 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
-            cd ./dist/moots-tooltip
             npm publish --access public
 workflows:
   version: 2
