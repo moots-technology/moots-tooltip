@@ -38,7 +38,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: ./dist/moots-tooltip/
+          at: /home/circleci/project/dist/moots-tooltip/
       - run:
           name: Authenticate with NPM
           command: |
@@ -55,7 +55,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: ./dist/moots-tooltip/
+          at: /home/circleci/project/dist/moots-tooltip/
       - run:
           name: Authenticate with NPM
           command: |
