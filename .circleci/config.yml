@@ -1,6 +1,22 @@
 version: 2.1
 jobs:
-  test:
+  # test:
+  #   docker:
+  #     - image: circleci/node:16
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Run Build
+  #         command: |
+  #           npm ci
+  #           npm run build
+  #     - persist_to_workspace:
+  #         root: .
+  #         paths:
+  #           - dist/*
+  #           - package.json
+  #           - package-lock.json
+  build:
     docker:
       - image: circleci/node:16
     steps:
@@ -51,12 +67,18 @@ workflows:
   version: 2
   ci:
     jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
       # - test:
       #     filters:
       #       tags:
       #         only: /.*/
 
       - publish-beta:
+          requires:
+            - build
           # requires:
           #   - test
           filters:
@@ -66,6 +88,8 @@ workflows:
               ignore: /.*/
 
       - publish:
+          requires:
+            - build
           # requires:
           #   - test
           filters:
