@@ -66,6 +66,7 @@ jobs:
       - run:
           name: Deploy to NPM
           command: |
+            pwd
             npm publish --access public
 workflows:
   version: 2
