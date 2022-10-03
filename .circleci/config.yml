@@ -29,7 +29,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - dist/moots-tooltip
+            - dist/*
             - package.json
             - package-lock.json
 
@@ -54,7 +54,7 @@ jobs:
       - image: circleci/node:16
     steps:
       - attach_workspace:
-          at: ./dist/moots-tooltip
+          at: ./dist/moots-tooltip/dist
       - run:
           name: Authenticate with NPM
           command: |
