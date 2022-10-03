@@ -56,16 +56,17 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-
       - run:
           name: Authenticate with NPM
           command: |
             cd dist/moots-tooltip
+            pwd
             printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
             npm whoami
       - run:
           name: Deploy to NPM
           command: |
+            pwd
             npm publish --access public
 workflows:
   version: 2
