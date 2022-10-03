@@ -53,7 +53,7 @@ jobs:
   publish:
     docker:
       - image: circleci/node:16
-    working_directory: ~/project/dist/moots-tooltip
+    working_directory: ~/dist/moots-tooltip
     steps:
       - attach_workspace:
           at: .
@@ -61,6 +61,7 @@ jobs:
           name: Authenticate with NPM
           command: |
             pwd
+            ls
             printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
             npm whoami
       - run:
