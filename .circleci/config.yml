@@ -53,7 +53,7 @@ jobs:
   publish:
     docker:
       - image: circleci/node:16
-    working_directory: ~/tmp/project/dist/moots-tooltip
+    working_directory: ~/project/dist/moots-tooltip
     steps:
       - attach_workspace:
           at: .
