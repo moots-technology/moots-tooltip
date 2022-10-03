@@ -67,6 +67,8 @@ jobs:
           name: Deploy to NPM
           command: |
             pwd
+            ls
+            cat package.json
             npm publish --access public
 workflows:
   version: 2
