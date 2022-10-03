@@ -53,10 +53,10 @@ jobs:
   publish:
     docker:
       - image: circleci/node:16
-    working_directory: ./dist/moots-tooltip
+    # working_directory: dist/moots-tooltip
     steps:
       - attach_workspace:
-          at: .
+          at: dist/moots-tooltip
       - run:
           name: Authenticate with NPM
           command: |
