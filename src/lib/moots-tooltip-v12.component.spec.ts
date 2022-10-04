@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MootsTooltipV12Component } from './moots-tooltip-v12.component';
+import { MootsTooltipComponent } from "./moots-tooltip-v12.component";
 
-describe('MootsTooltipV12Component', () => {
-  let component: MootsTooltipV12Component;
-  let fixture: ComponentFixture<MootsTooltipV12Component>;
+describe("MootsTooltipComponent", () => {
+  let component: MootsTooltipComponent;
+  let fixture: ComponentFixture<MootsTooltipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MootsTooltipV12Component ]
-    })
-    .compileComponents();
+      declarations: [MootsTooltipComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MootsTooltipV12Component);
+    fixture = TestBed.createComponent(MootsTooltipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

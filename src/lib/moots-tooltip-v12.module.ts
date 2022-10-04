@@ -1,16 +1,9 @@
-import { NgModule } from '@angular/core';
-import { MootsTooltipV12Component } from './moots-tooltip-v12.component';
-
-
+import { NgModule } from "@angular/core";
+import { MootsTooltipComponent } from "./moots-tooltip-v12.component";
 
 @NgModule({
-  declarations: [
-    MootsTooltipV12Component
-  ],
-  imports: [
-  ],
-  exports: [
-    MootsTooltipV12Component
-  ]
+  declarations: [MootsTooltipComponent],
+  imports: [],
+  exports: [MootsTooltipComponent],
 })
-export class MootsTooltipV12Module { }
+export class MootsTooltipModule {}

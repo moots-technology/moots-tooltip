@@ -1,20 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'lib-moots-tooltip-v12',
-  template: `
-    <p>
-      moots-tooltip-v12 works!
-    </p>
-  `,
-  styles: [
-  ]
+  selector: "lib-moots-tooltip-v12",
+  template: ` <p>moots-tooltip-v12 works!</p> `,
+  styles: [],
 })
-export class MootsTooltipV12Component implements OnInit {
+export class MootsTooltipComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,13 +1,13 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2 } from "@angular/core";
 import {
   autoUpdate,
   computePosition,
   offset,
   Placement,
   shift,
-} from '@floating-ui/dom';
-import { ArrowsService } from './arrows.service';
-import { DIRECTION, IArrow } from 'arrows-svg';
+} from "@floating-ui/dom";
+import { ArrowsService } from "./arrows.service";
+import { DIRECTION, IArrow } from "arrows-svg";
 
 interface TooltipData {
   parent: HTMLElement;
@@ -20,9 +20,9 @@ interface ArrowsDirection {
   end: string;
 }
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
-export class MootsTooltipV12Service {
+export class MootsTooltipService {
   private renderer: Renderer2;
 
   private tooltips = new Set<TooltipData>();
@@ -34,51 +34,51 @@ export class MootsTooltipV12Service {
     private arrowService: ArrowsService
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
-    this.arrowsDirection.set('top-end', {
+    this.arrowsDirection.set("top-end", {
       start: DIRECTION.RIGHT,
       end: DIRECTION.TOP,
     });
-    this.arrowsDirection.set('top-start', {
+    this.arrowsDirection.set("top-start", {
       start: DIRECTION.LEFT,
       end: DIRECTION.TOP,
     });
-    this.arrowsDirection.set('top', {
+    this.arrowsDirection.set("top", {
       start: DIRECTION.BOTTOM,
       end: DIRECTION.TOP,
     });
-    this.arrowsDirection.set('bottom-end', {
+    this.arrowsDirection.set("bottom-end", {
       start: DIRECTION.RIGHT,
       end: DIRECTION.BOTTOM,
     });
-    this.arrowsDirection.set('bottom-start', {
+    this.arrowsDirection.set("bottom-start", {
       start: DIRECTION.LEFT,
       end: DIRECTION.BOTTOM,
     });
-    this.arrowsDirection.set('bottom', {
+    this.arrowsDirection.set("bottom", {
       start: DIRECTION.TOP,
       end: DIRECTION.BOTTOM,
     });
-    this.arrowsDirection.set('left-start', {
+    this.arrowsDirection.set("left-start", {
       start: DIRECTION.RIGHT,
       end: DIRECTION.BOTTOM,
     });
-    this.arrowsDirection.set('left-end', {
+    this.arrowsDirection.set("left-end", {
       start: DIRECTION.RIGHT,
       end: DIRECTION.TOP,
     });
-    this.arrowsDirection.set('left', {
+    this.arrowsDirection.set("left", {
       start: DIRECTION.RIGHT,
       end: DIRECTION.LEFT,
     });
-    this.arrowsDirection.set('right-end', {
+    this.arrowsDirection.set("right-end", {
       start: DIRECTION.LEFT,
       end: DIRECTION.TOP,
     });
-    this.arrowsDirection.set('right-start', {
+    this.arrowsDirection.set("right-start", {
       start: DIRECTION.LEFT,
       end: DIRECTION.BOTTOM,
     });
-    this.arrowsDirection.set('right', {
+    this.arrowsDirection.set("right", {
       start: DIRECTION.LEFT,
       end: DIRECTION.RIGHT,
     });
@@ -88,7 +88,7 @@ export class MootsTooltipV12Service {
     parentId: string,
     targetId: string,
     text: string,
-    textPlacement: Placement = 'top'
+    textPlacement: Placement = "top"
   ) {
     const parentNode: HTMLElement | null = document.querySelector(
       `#${parentId}`
@@ -97,13 +97,13 @@ export class MootsTooltipV12Service {
       `#${targetId}`
     );
 
-    const tooltip: HTMLElement = this.renderer.createElement('div');
-    this.renderer.addClass(tooltip, 'tooltip');
+    const tooltip: HTMLElement = this.renderer.createElement("div");
+    this.renderer.addClass(tooltip, "tooltip");
     tooltip.textContent = text;
 
     if (!parentNode || !targetNode) {
-      console.log('Parent or target node not found');
-      throw new Error('Parent or target node not found');
+      console.log("Parent or target node not found");
+      throw new Error("Parent or target node not found");
     }
 
     setTimeout(() => {
@@ -117,11 +117,11 @@ export class MootsTooltipV12Service {
             middleware: [
               offset(({ rects, placement }) => ({
                 mainAxis:
-                  placement === 'bottom'
+                  placement === "bottom"
                     ? rects.floating.width
                     : rects.reference.width,
                 alignmentAxis:
-                  placement === 'right'
+                  placement === "right"
                     ? rects.reference.width
                     : rects.floating.width,
               })),
@@ -143,8 +143,8 @@ export class MootsTooltipV12Service {
       setTimeout(() => {
         const arrowD = this.arrowsDirection.get(textPlacement);
         if (!arrowD) {
-          console.log('Arrow direction not found');
-          throw new Error('Arrow direction not found');
+          console.log("Arrow direction not found");
+          throw new Error("Arrow direction not found");
         }
 
         const arrowT = this.arrowService.addArrow(
