@@ -13,7 +13,6 @@
     "downlevelIteration": true,
     "paths": {
       "moots-tooltip": [
-        "dist/moots-tooltip/moots-tooltip",
         "dist/moots-tooltip"
       ]
     },

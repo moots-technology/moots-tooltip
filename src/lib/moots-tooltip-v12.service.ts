@@ -47,11 +47,11 @@ export class MootsTooltipService {
       end: DIRECTION.TOP,
     });
     this.arrowsDirection.set("bottom-end", {
-      start: DIRECTION.RIGHT,
+      start: DIRECTION.LEFT,
       end: DIRECTION.BOTTOM,
     });
     this.arrowsDirection.set("bottom-start", {
-      start: DIRECTION.LEFT,
+      start: DIRECTION.RIGHT,
       end: DIRECTION.BOTTOM,
     });
     this.arrowsDirection.set("bottom", {
@@ -85,14 +85,16 @@ export class MootsTooltipService {
   }
 
   addTooltip(
-    parentId: string,
     targetId: string,
     text: string,
-    textPlacement: Placement = "top"
+    textPlacement: Placement = "top",
+    parentId?: string
   ) {
-    const parentNode: HTMLElement | null = document.querySelector(
-      `#${parentId}`
-    );
+    const parentNode: HTMLElement | null = parentId
+      ? (document.querySelector(`#${parentId}`)?.parentElement as HTMLElement)
+      : (document.querySelector(`#${targetId}`)?.parentElement
+          ?.parentElement as HTMLElement);
+
     const targetNode: HTMLElement | null = document.querySelector(
       `#${targetId}`
     );
@@ -105,9 +107,7 @@ export class MootsTooltipService {
       console.log("Parent or target node not found");
       throw new Error("Parent or target node not found");
     }
-
     setTimeout(() => {
-      console.log(targetNode.getBoundingClientRect());
       autoUpdate(
         targetNode,
         tooltip,
@@ -117,15 +117,26 @@ export class MootsTooltipService {
             middleware: [
               offset(({ rects, placement }) => ({
                 mainAxis:
-                  placement === "bottom"
-                    ? rects.floating.width
+                  placement.split("-")[0] === "bottom" || "top"
+                    ? rects.reference.width >= 0.5 * window.innerWidth
+                      ? Math.min(
+                          0.5 * rects.reference.width,
+                          0.35 * window.innerHeight
+                        )
+                      : Math.min(0.35 * window.innerWidth, 250)
                     : rects.reference.width,
                 alignmentAxis:
-                  placement === "right"
-                    ? rects.reference.width
-                    : rects.floating.width,
+                  placement.split("-")[0] === "top"
+                    ? 0.65 * rects.reference.width
+                    : placement.split("-")[0] === "bottom"
+                    ? Math.abs(
+                        0.5 * rects.reference.width - 1.5 * rects.floating.width
+                      )
+                    : placement.split("-")[0] === "left" || "right"
+                    ? rects.reference.height
+                    : 0,
               })),
-              shift(),
+              shift({ padding: 5 }),
             ],
           }).then(({ x, y }) => {
             Object.assign(tooltip.style, {

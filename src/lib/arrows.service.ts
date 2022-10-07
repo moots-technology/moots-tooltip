@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import arrowCreate, { DIRECTION, HEAD, IArrow } from 'arrows-svg';
+import arrowCreate, { DIRECTION, HEAD, IArrow } from "arrows-svg";
 
 type TranslationArray = { a: number; b: number; c: number; d: number };
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ArrowsService {
   private translationArray = new Map<string, TranslationArray>();
@@ -69,14 +69,11 @@ export class ArrowsService {
     const translation = this.translationArray.get(`${arrowStart}-${arrowEnd}`);
 
     if (!translation) {
-      throw new Error('Invalid arrow direction');
+      throw new Error("Invalid arrow direction");
     }
 
-    console.log('fromNode');
-    console.log(fromNode.getBoundingClientRect());
-
     return arrowCreate({
-      className: 'arrow-test',
+      className: "arrow-test",
       from: {
         direction: arrowStart,
         node: fromNode,
@@ -90,7 +87,7 @@ export class ArrowsService {
       head: {
         func: HEAD.NORMAL,
         size: 13, // custom options that will be passed to head function
-        // distance: 1,
+        distance: 0.998,
       },
       updateDelay: 0,
     });

@@ -10,7 +10,8 @@
     "url": "https://github.com/Kay-Yuan/moots-tooltip"
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json"
+    "build": "ng-packagr -p ng-package.json",
+    "build:watch": "ng-packagr --watch -p ng-package.json "
   },
   "peerDependencies": {
     "@angular/common": "^12.0.0",
