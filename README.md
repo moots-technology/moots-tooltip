@@ -31,10 +31,10 @@ export class Tab2Page {
 
   ionViewDidEnter() {
     this.tooltipService.addTooltip(
-      'tab2-content',   // parent id
       'tab2-span',      // target id
       'hello world!',   // text content
       'top-start'       // tooltip position
+      'tab2-content',   // parent id (optional)
     );  // -> add tooltips
   }
 
