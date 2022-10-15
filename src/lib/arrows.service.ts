@@ -87,7 +87,7 @@ export class ArrowsService {
       head: {
         func: HEAD.NORMAL,
         size: 13, // custom options that will be passed to head function
-        distance: 0.998,
+        // distance: 0.998,
       },
       updateDelay: 0,
     });
