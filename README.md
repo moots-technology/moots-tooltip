@@ -1,4 +1,4 @@
-<!-- ![Build](https://github.com/moots-technology/moots-datetime-picker/actions/workflows/node.js.yml/badge.svg) -->
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Kay-Yuan/moots-tooltip/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Kay-Yuan/moots-tooltip/tree/master)
 # Moots Tooltip
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0
