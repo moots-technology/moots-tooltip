@@ -1,13 +1,12 @@
 {
-  "name": "moots-tooltip",
-  "version": "0.0.45",
+  "name": "moots-arrow-tooltip",
+  "version": "0.1.0",
   "author": {
-    "name": "Fangyu Yuan",
-    "email": "fangyu204@gmail.com"
+    "name": "moots-technology"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kay-Yuan/moots-tooltip"
+    "url": "https://github.com/moots-technology/moots-tooltip"
   },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
