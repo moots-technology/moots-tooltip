@@ -135,7 +135,7 @@ offset(({rects, placement}) => ({
 
 current setting in `src/lib/moots-tooltip-v12.service.ts` start from line 118
 ```typescript
-offset(({ rects, placement }) => ({
+ offset(({ rects, placement }) => ({
                 mainAxis:
                   placement.split("-")[0] === "bottom" || "top"
                     ? rects.reference.width >= 0.5 * window.innerWidth
@@ -149,9 +149,9 @@ offset(({ rects, placement }) => ({
                   placement.split("-")[0] === "top"
                     ? 0.65 * rects.reference.width
                     : placement.split("-")[0] === "bottom"
-                    ? Math.abs(
-                        0.5 * rects.reference.width - 1.5 * rects.floating.width
-                      )
+                    ? rects.floating.width < 0.5 * rects.reference.width    // when placement is 'bottom' start, then compare the target and tooltip width
+                      ? (0.5 * rects.reference.width - rects.floating.width) / 2
+                      : 0.25 * rects.reference.width - rects.floating.width
                     : placement.split("-")[0] === "left" || "right"
                     ? rects.reference.height
                     : 0,
