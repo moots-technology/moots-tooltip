@@ -14,7 +14,7 @@ Dependencies:
 
 The tooltip:
 
-`npm i moots-tooltip`
+`npm i moots-arrow-tooltip`
 
 ## Example
 ### Add arrows-svg moudle declaration file (TypeScript project only)
@@ -45,11 +45,11 @@ Include the declarations file in your `tsconfig.json` or `tsconfig.spec.json`
 For example, in the `ion-page.ts` file of an Ionic project:
 ```ts
 import { Component } from '@angular/core';
-import { TooltipService } from 'moots-tooltips';   // -> import the package
+import { MootsTooltipService } from 'moots-arrow-tooltip';   // -> import the package
 
 @Component({...})
 export class Tab2Page {
-  constructor(private tooltipService: TooltipService) {}   // -> inject the service
+  constructor(private tooltipService: MootsTooltipService) {}   // -> inject the service
 
   ionViewDidEnter() {  // lifecyle hooks
     this.tooltipService.addTooltip(
