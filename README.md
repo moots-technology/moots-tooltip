@@ -91,6 +91,7 @@ export class Tab2Page {
 }
 
 ```
+Play it on [Stackblitz](https://stackblitz.com/edit/angular-ivy-wppnpw).
 
 # Documentation
 ## Tooltip API
