@@ -3,10 +3,7 @@
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0
 
 # Usage
-
-Using with the Ionic lifescycle hooks.
-
-## Install
+### Install
 
 Dependencies:
 
@@ -16,7 +13,6 @@ The tooltip:
 
 `npm i moots-arrow-tooltip`
 
-## Example
 ### Add arrows-svg moudle declaration file (TypeScript project only)
 Due to `arrows-svg` currently is a JavaScript library. So we have to create a moudle declaration to let TypeScript know it exists.
 
@@ -97,7 +93,12 @@ Play it on [Stackblitz](https://stackblitz.com/edit/angular-ivy-wppnpw).
 ## Tooltip API
 ```ts
 class MootsTooltipService {
-  addTooltip(targetId, text, textPlacement, parentId?);  // <- add tooltip
+  addTooltip(   // <- add tooltip
+    targetId: string,
+    text: string,
+    textPlacement: Placement = "top",
+    parentId?: string
+  )  
   clearAll();  // <- clear all exist the tooltips
 }
 ```
@@ -105,9 +106,14 @@ class MootsTooltipService {
 ## Tooltip Text Setting
 All setting of Tooltip text part located in `src/lib/moots-tooltip-v12.service.ts` from line 111.
 
-According to [@floating-ui](https://floating-ui.com/) documentation, 
+Placement
+```ts
+type Placement = 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start'
+| 'bottom-end' | 'left' | 'left-start' | 'left-end';
+```
+ 
 
-[offset()](https://floating-ui.com/docs/offset) can be number(default for mainAxis)
+Text part [offset()](https://floating-ui.com/docs/offset) displaces the floating element from its core placement along the specified axes.
 ```ts
 offset({mainAxis: 10}); // Represents the distance (gutter or margin) between the floating element and the reference element.
 offset({crossAxis: 10}); // Represents the skidding between the floating element and the reference element.
@@ -166,7 +172,19 @@ More middleware controller can be applied, checkout [@floating-ui](https://float
 ## Arrow Setting
 All setting of arrow in `src/lib/arrows.service.ts` start from line 75. 
 ```ts
-return arrowCreate({
+addArrow(
+    fromNode: HTMLElement,
+    toNode: HTMLElement,
+    arrowStart: string,
+    arrowEnd: string
+  ): IArrow {
+    const translation = this.translationArray.get(`${arrowStart}-${arrowEnd}`);
+
+    if (!translation) {
+      throw new Error("Invalid arrow direction");
+    }
+
+    return arrowCreate({
       className: "arrow-test",
       from: {
         direction: arrowStart,
@@ -191,14 +209,16 @@ return arrowCreate({
 `direction` - position of Anchor in HTMLElement from/to.
 
 `translation` - is an array of two numbers [x, y] like [-0.5, 1.3] which are used by Bezier curve. x and y are offset multiplier of 
-Bezier control point. Translation control the curve of arrow__path.
+Bezier control point. Translation control the curve of `arrow__path` and `head` direction.
+> In this package `translation` has been preset in the `constructor` of `arrows.service.ts` according to the arrow start and end position.
+> Arrow tail curve depends on `translation` and position of text part.
 
 `node` - if HTMLElement still doesn't exist in DOM, try to pass it as a function () => node.
 
 `head`
  - `func` - multiple head style options, checkout arrows-svg doc for more customisation.
  - `size` - head size, default size is 10.
- - `distance` - the percentage of the length from tail to head in whole arrow__path. Default distance is 1.
+ - `distance` - the percentage of the length from tail to `head` in whole `arrow__path`. Default distance is 1.
 
 More configuration checkout [arrows-svg](https://www.npmjs.com/package/arrows-svg/v/1.5.4).
 
