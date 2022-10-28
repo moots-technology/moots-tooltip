@@ -129,9 +129,9 @@ export class MootsTooltipService {
                   placement.split("-")[0] === "top"
                     ? 0.65 * rects.reference.width
                     : placement.split("-")[0] === "bottom"
-                    ? Math.abs(
-                        0.5 * rects.reference.width - 1.5 * rects.floating.width
-                      )
+                    ? rects.floating.width < 0.5 * rects.reference.width
+                      ? (0.5 * rects.reference.width - rects.floating.width) / 2
+                      : 0.25 * rects.reference.width - rects.floating.width
                     : placement.split("-")[0] === "left" || "right"
                     ? rects.reference.height
                     : 0,
