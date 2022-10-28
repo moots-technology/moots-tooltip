@@ -22,6 +22,9 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
     "ng-packagr": "^12.1.1"
   },
   "license": "MIT"
