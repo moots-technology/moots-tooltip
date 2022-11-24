@@ -117,9 +117,13 @@ export class MootsTooltipService {
             middleware: [
               offset(({ rects, placement }) => ({
                 mainAxis:
-                  placement.split("-")[0] === "bottom" || placement.split("-")[0] === "top"
+                  placement.split("-")[0] === "bottom" ||
+                  placement.split("-")[0] === "top"
                     ? rects.reference.width >= 0.5 * window.innerWidth
-                      ? Math.min(0.5 * rects.reference.width, 0.35 * window.innerHeight)
+                      ? Math.min(
+                          0.5 * rects.reference.width,
+                          0.35 * window.innerHeight
+                        )
                       : Math.min(0.35 * window.innerWidth, 250)
                     : rects.reference.width,
                 alignmentAxis:
@@ -129,7 +133,8 @@ export class MootsTooltipService {
                     ? rects.floating.width < 0.5 * rects.reference.width
                       ? (0.5 * rects.reference.width - rects.floating.width) / 2
                       : 0.25 * rects.reference.width - rects.floating.width
-                    : placement.split("-")[0] === "left" || placement.split("-")[0] === "right"
+                    : placement.split("-")[0] === "left" ||
+                      placement.split("-")[0] === "right"
                     ? rects.reference.height
                     : 0,
               })),
@@ -168,8 +173,8 @@ export class MootsTooltipService {
           text: tooltip,
           arrow: arrowT,
         });
-      }, 20);
-    }, 150);
+      }, 5);
+    }, 10);
   }
 
   clearAll() {
