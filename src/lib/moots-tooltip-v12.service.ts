@@ -7,7 +7,8 @@ import {
   shift,
 } from "@floating-ui/dom";
 import { ArrowsService } from "./arrows.service";
-import { DIRECTION, IArrow } from "arrows-svg";
+import { DIRECTION } from "arrows-svg";
+import { IArrow } from "arrows-svg/types/interfaces/IArrow";
 
 interface TooltipData {
   parent: HTMLElement;

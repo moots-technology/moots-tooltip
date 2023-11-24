@@ -13,10 +13,10 @@
     "build:watch": "ng-packagr --watch -p ng-package.json "
   },
   "peerDependencies": {
-    "@angular/common": "^12.0.0",
-    "@angular/core": "^12.0.0",
-    "@floating-ui/dom": "^1.0.2",
-    "arrows-svg": "^1.5.6"
+    "@angular/common": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "@floating-ui/dom": "^1.5.3",
+    "arrows-svg": "^1.7.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"
@@ -25,7 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
-    "ng-packagr": "^12.1.1"
+    "ng-packagr": "^14.0.0"
   },
   "license": "MIT"
 }

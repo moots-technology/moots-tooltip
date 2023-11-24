@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
-import arrowCreate, { DIRECTION, HEAD, IArrow } from "arrows-svg";
+import arrowCreate, { DIRECTION, HEAD } from "arrows-svg";
+import { IArrow } from "arrows-svg/types/interfaces/IArrow";
 
 type TranslationArray = { a: number; b: number; c: number; d: number };
 @Injectable({
